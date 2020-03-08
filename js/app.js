@@ -123,7 +123,9 @@ const changingCar = () => {
         carImg.setAttribute('src', ImgSrc);
         carTxt.innerHTML = CarName[carCompany];
         accelarationTxt.innerHTML = accelaration[carCompany];
-        mileageTxt.innerHTML = mileage[carCompany]
+        mileageTxt.innerHTML = mileage[carCompany];
+        CarBrandsOptionParent.classList.add('disable');
+        colorOptions.classList.add('disable');
         const coloredTxt = txtColor.map(txt => {
             txt.style.color = txtColorArray[carCompany];
         });
