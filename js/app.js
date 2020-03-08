@@ -23,6 +23,10 @@ const car = document.querySelector('.car');
 const carImg = document.querySelector('.car img');
 const CarInformation = document.querySelector('.information');
 const CarLogo = document.querySelector('.car-logo');
+const carTxt = document.querySelector('.car-txt');
+const accelarationTxt = document.querySelector('.accelaration-txt');
+const mileageTxt = document.querySelector('.mileage-txt');
+const txtColor = [...document.querySelectorAll('.txt-color')];
 
 // end
 
@@ -33,6 +37,30 @@ let carArray = [
     "lambo",
     "bugatti",
     "mclaren"
+];
+
+const accelaration = [
+    "2.8s",
+    "2.5s",
+    "2.3s"
+]
+
+const mileage = [
+    "11.24 kmpl",
+    "6.8 kmpl",
+    "11.7 kmpl"
+]
+
+const CarName = [
+    "lamborghini",
+    "bugatti",
+    "mclaren"
+];
+
+const txtColorArray = [
+    "#e3b835",
+    "#e33d35",
+    "#c70f06",
 ]
 
 // end
@@ -88,6 +116,12 @@ const changingCar = () => {
         const ImgSrc = `${ImgDirectory}${carBrand[carArray[carCompany]]}/${carBrand[carArray[carCompany]]}_${Carcolors[2].className}${imgExtension}`;
     
         carImg.setAttribute('src', ImgSrc);
+        carTxt.innerHTML = CarName[carCompany];
+        accelarationTxt.innerHTML = accelaration[carCompany];
+        mileageTxt.innerHTML = mileage[carCompany]
+        const coloredTxt = txtColor.map(txt => {
+            txt.style.color = txtColorArray[carCompany];
+        });
     }, 500);
 
     setTimeout(() => {  

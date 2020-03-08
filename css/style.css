@@ -135,15 +135,12 @@ body{
     letter-spacing: 3px;
 }
 
-.main-body .information .txt{
+.main-body .information .accelaration-txt,
+.main-body .information .mileage-txt{
     color: #fff;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 3em;
     font-weight: 100;
-}
-
-.main-body .information .txt span{
-    font-size: 1em;
 }
 
 .main-body .information p:nth-child(3){
