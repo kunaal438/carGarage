@@ -1,0 +1,513 @@
+body{
+    margin: 0;
+    padding: 0;
+    background: #292929;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: roboto;
+}
+
+.body{
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.top-shield,
+.bottom-shield{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    background: #0f0f0f;
+    z-index: 999;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 1);
+}
+
+.top-shield{
+    clip-path: polygon(0 0, 0% 100%, 100% 0);
+    top: -100%;
+    left: -100%;
+    transition: all 0.5s ease;
+}
+
+.top-shield.active{
+    top: 0;
+    left: 0;
+}
+
+.bottom-shield.active{
+    bottom: 1px;
+    right: 1px;
+}
+
+.bottom-shield{
+    clip-path: polygon(100% 100%, 0% 100%, 100% 0);
+    right: -100%;
+    bottom: -100%;
+    transition: all 0.5s ease;
+}
+
+.main-body{
+    width: 90%;
+    height: 85vh;
+    background: url('../img/car_garage.png');
+    background-size: cover;
+    background-position: center center;
+    margin: 4% auto;
+    position: relative;
+    box-shadow: 10px 10px 100px 10px #000;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.main-body .car{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    background-size: 100% 100%;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+}
+
+.main-body .car.lambo{
+    transform: translate(-50%,-42%) scale(0.5);
+}
+
+.main-body .car.bugatti{
+    transform: translate(-50%,-35%) scale(0.35);
+}
+
+.main-body .car.mclaren{
+    transform: translate(-50%,-31%) scale(0.4);
+}
+
+.main-body .car img{
+    width: 100%;
+    height: auto;
+}
+
+.main-body .car-txt{
+    font-size: 3rem;
+    position: absolute;
+    color: #e3b835;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 10px;
+    font-family: "Mistral Regular",'Luckiest Guy', cursive;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+    top: -20px;
+    text-shadow: 3px 1px 1px #000;
+}
+
+.main-body .information{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: -300px;
+    line-height: 0;
+    z-index: 3;
+    text-shadow: 0px 0px 10px #000;
+    font-size: 15px;
+    transition: all 0.5s ease;
+    opacity: 0;
+}
+
+.main-body .information.slide-in{
+    opacity: 1;
+    left: 60px;
+    display: block;
+}
+
+.main-body .information .accelaration,
+.main-body .information .mileage{
+    font-size: 1.3em;
+    color: #e3b835;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.main-body .information .txt{
+    color: #fff;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 3em;
+    font-weight: 100;
+}
+
+.main-body .information .txt span{
+    font-size: 1em;
+}
+
+.main-body .information p:nth-child(3){
+    color: #fff;
+    font-size: 0.7em;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    padding: 0 0 30px 0;
+    margin-top: -10px;
+    font-weight: 100;
+}
+
+.main-body .car-logo{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -200px;
+    background-size: 100% 100%;
+    width: 190px;
+    height: 220px;
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.5s ease;
+}
+
+.main-body .car-logo.slide-in{
+    right: 60px;
+    opacity: 1;
+    display: block;
+}
+
+.main-body .car-logo img{
+    width: 100%;
+    height: 100%;
+}
+
+.container{
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 80px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 3;
+}
+
+.container .discover-car,
+.container .color-option{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: #282828;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+
+.loader{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+}
+
+.container i{
+    font-size: 1.4rem;
+}
+
+.container .color-option i{
+    color: #ffd341;
+}
+
+.container .explore-more{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    position: relative;
+    text-align: center;
+    outline: none;
+    background: #ff003c;
+    cursor: pointer;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container .discover-car p,
+.container .color-option p,
+.container .explore-more p{
+    color: #fff;
+    margin-top: 55px;
+    text-transform: uppercase;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.7rem;
+    position: absolute;
+}
+.container .explore-more p{
+    margin-top: 65px;
+}
+
+.container .discover-car::before,
+.container .color-option::before,
+.container .explore-more::before{
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    box-shadow: inset 0 0 10px #fff;
+    border-radius: 50%;
+}
+
+.colors-main-box{
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    bottom: 100%;
+    right: -100px;
+    opacity: 1;
+}
+
+.disable{
+    display: none;
+    opacity: 0;
+}
+
+.rectangular-box{
+    width: 60%;
+    height: 30px;
+    background: rgba(0, 0, 0, 0.7);
+    border: 1px solid #ff003c;
+    margin: 20px 0;
+    margin-left: auto;
+    border-radius: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    position: relative;
+    opacity: 1;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.rectangular-box:nth-child(4){
+    width: 75%;
+}
+.rectangular-box:nth-child(3){
+    width: 70%;
+}
+.rectangular-box:nth-child(2){
+    width: 65%;
+}
+.rectangular-box:nth-child(1){
+    margin-top: 0;
+    width: 60%;
+}
+
+.green,
+.red,
+.yellow,
+.cyan{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    left: -10px;
+}
+
+.rectangular-box:hover,
+.car-brand-item:hover{
+    -webkit-box-shadow: 2px 2px 10px 2px #000;
+    -o-box-shadow: 2px 2px 10px 2px #000;
+    -ms-box-shadow: 2px 2px 10px 2px #000;
+    box-shadow: 2px 2px 10px 2px #000;
+    transform-origin: center center;
+    transform: scale(1.02);
+    transition: 0.3s all;
+}
+
+.green{
+    background: rgb(123, 255, 15);
+}
+
+.cyan{
+    background: rgb(0, 255, 255);
+}
+
+.yellow{
+    background: #ffc721;
+}
+
+.red{
+    background: #ff003c;
+}
+
+.rectangular-box div::before{
+    width: 400%;
+    height: 100%;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.red::after,
+.green::after,
+.yellow::after,
+.cyan::after{
+    content: 'RED';
+    position: absolute;
+    top: 13px;
+    left: 50px;
+    font-size: 0.8rem;
+}  
+
+.green::after{
+    content: 'GREEN';
+}
+.cyan::after{
+    content: 'CYAN';
+}
+.yellow::after{
+    content: 'YELLOW';
+}
+
+.car-brands{
+    position: absolute;
+    width: 150px;
+    bottom: 80px;
+    left: 5%;
+}
+
+.car-brands .car-brand-item{
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    border: 1px solid red;
+    height: 30px;
+    margin: 10px 0;
+    display: flex;
+    padding: 0 10px;
+    justify-content: flex-start;
+    align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
+    clip-path: polygon(0 0, 100% 0, 89% 100%, 0% 100%);
+    position: relative;
+}
+
+.car-brands .car-brand-item:nth-child(1){
+    width: 50%;
+}
+
+.car-brands .car-brand-item:nth-child(2){
+    width: 75%;
+}
+
+@media only screen and (max-width:1080px){
+    .main-body .car{
+        width: 150%;
+    }
+}
+
+@media only screen and (max-width:990px){
+    .main-body{
+        width: 100%;
+        height: 100vh;
+        margin: 0;
+    }
+    .main-body .car-logo{
+        width: 160px;
+        height: 160px;
+        right: 3%;
+    }
+    .main-body .information{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:769px){
+    .main-body .car-txt{
+        margin-top: 80px;
+    }
+    .colors-main-box{
+        width: 220px;
+        right: -100px;
+    }
+    .main-body .car{
+        width: 200vw;
+    }
+}
+
+@media only screen and (max-width:575px){
+    .main-body .information{
+        font-size: 16px;
+    }
+    .main-body .car-txt{
+        font-size: 2.4rem;
+        letter-spacing: 3px;
+        margin-top: 100px;
+    }
+    .colors-main-box{
+        width: 220px;
+        right: -78px;
+        bottom: 94%;
+    }
+    .top-shield{
+        top: -100%;
+        left: -100%;
+    }
+    .bottom-shield{
+        right: -100%;
+        bottom: -100%;
+    }
+    .rectangular-box{
+        margin-left: 0;
+        margin-right: auto;
+    }
+    .main-body .car-logo{
+        width: 100px;
+        height: 100px;
+        right: 5%;
+    }
+    .main-body .car{
+        width: 180vw;
+        top: 55%;
+    }
+}
+
+@media only screen and (max-height: 385px){
+    body::before{
+        content: '';
+        width: 100vw;
+        height: 100vh;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99999;
+        background: #000;
+    }
+    body::after{
+        content: 'ROTATE YOUR DEVICE TO VIEW THE SITE...';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        z-index: 99999999999;
+        color: #fff;
+        font-family: roboto;
+    }
+}
