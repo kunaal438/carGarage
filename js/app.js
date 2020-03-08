@@ -22,7 +22,8 @@ const detailCarBtn = document.querySelector('.discover-car');
 const car = document.querySelector('.car');
 const carImg = document.querySelector('.car img');
 const CarInformation = document.querySelector('.information');
-const CarLogo = document.querySelector('.car-logo');
+const CarLogoDiv = document.querySelector('.car-logo');
+const CarLogoImg = document.querySelector('.car-logo img');
 const carTxt = document.querySelector('.car-txt');
 const accelarationTxt = document.querySelector('.accelaration-txt');
 const mileageTxt = document.querySelector('.mileage-txt');
@@ -80,11 +81,14 @@ const carBrand = {
 
 exploreBtn.addEventListener('click', () => {
     CarInformation.classList.toggle('slide-in');
-    CarLogo.classList.toggle('slide-in');
+    CarLogoDiv.classList.toggle('slide-in');
+    CarBrandsOptionParent.classList.add('disable');
+    colorOptions.classList.add('disable');
 })
 
 ColorBtn.addEventListener('click', () => {
     colorOptions.classList.toggle('disable');
+    CarBrandsOptionParent.classList.add('disable');
 })
 
 const CarColorShifter = Carcolors.map((color, index)  => {
@@ -96,6 +100,7 @@ const CarColorShifter = Carcolors.map((color, index)  => {
 
 detailCarBtn.addEventListener('click', () => {
     CarBrandsOptionParent.classList.toggle('disable');
+    colorOptions.classList.add('disable');
 })
 
 const carBrandArray = CarBrandsOption.map((car, index) => {
@@ -122,6 +127,7 @@ const changingCar = () => {
         const coloredTxt = txtColor.map(txt => {
             txt.style.color = txtColorArray[carCompany];
         });
+        CarLogoImg.setAttribute('src', `img/logo/${carArray[carCompany]}_logo.png`);
     }, 500);
 
     setTimeout(() => {  
@@ -135,3 +141,8 @@ const carClassRemoving = () => {
         car.classList.remove(carArray[i]);
     }
 }
+
+window.addEventListener('load', () => {
+    const loader = document.querySelector('.loader');
+    loader.style.display = "none";
+})
