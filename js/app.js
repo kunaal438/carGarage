@@ -131,11 +131,14 @@ const changingCar = () => {
         });
         CarLogoImg.setAttribute('src', `img/logo/${carArray[carCompany]}_logo.png`);
     }, 500);
+    
+    carImg.onload = function () {
+        setTimeout(() => {  
+            topSheild.classList.remove('active');
+            bottomSheild.classList.remove('active'); 
+        }, 1000);
 
-    setTimeout(() => {  
-        topSheild.classList.remove('active');
-        bottomSheild.classList.remove('active'); 
-    }, 1000);
+    }
 }
 
 const carClassRemoving = () => {
